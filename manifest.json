@@ -1,19 +1,34 @@
 {
-	"manifest_version": 2,
-	"name": "DS No Premium Cleaner",
-	"description": "Clears the Dreaming Spanish site of premium videos for non-premium users.",
-	"version": "0.0.1",
-	"icons": {
-		"64": "icons/icon.png"
-	},
-	"content_scripts": [
-		{
-			"matches": [
-				"*://*.mozilla.org/*"
-			],
-			"js": [
-				"content_script.js"
-			]
-		}
-	]
+  "manifest_version": 3,
+  "name": "DS No Premium Cleaner",
+  "description": "Clears the Dreaming Spanish site of premium videos for non-premium users.",
+  "version": "0.0.1",
+  "icons": {
+    "48": "icons/icon48.png",
+    "64": "icons/icon64.png",
+    "96": "icons/icon96.png",
+    "128": "icons/icon128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "data_collection_permissions": {
+        "required": ["none"]
+      },
+      "id": "@ds-premium-video-delete.groundedwanderer",
+      "strict_min_version": "142.0"
+    },
+    "gecko-android": {
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.dreaming.com/*"],
+      "js": ["content_script.js"],
+      "css": ["custom_style.css"],
+      "run_at": "document_start"
+    }
+  ]
 }
